@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CBOT</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <style>
+      form {
+        margin-top: 20px;
+            }
+
+      button {
+        margin-top: 10px;
+              }
+      .bold-text {
+        font-weight: bold;
+                }
+    </style>
+
+  </head>
+  <body>
+    <!-- Add a container -->
+    <div class="container">
+      <!-- Add a header -->
+      <h1 class="text-center">CBOT developed by CDAC Kolkata</h1>
+      <!-- Display the chat logs -->
+      {% for chat in chat_logs %}
+      <p class="text-left bold-text">{{ chat.user }}: {{ chat.text }}</p>
+      {% endfor %}
+      <!-- Add a form for the chatbot -->
+      <form class="form-group" method="post">
+        <!-- Include the csrf token -->
+        {% csrf_token %}
+        <!-- Input field for user text -->
+        <input class="form-control" type="text" name="text" placeholder="You">
+        <!-- Submit button -->
+        <div class="text-center">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
